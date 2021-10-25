@@ -11,5 +11,4 @@ class Customer extends Model
     public $timestamps = false;
     protected $primaryKey = 'NatID';
     protected $filled = ['NatID','firstname','lastname','email','PhoneNo','regDate','password'];
-    
 }

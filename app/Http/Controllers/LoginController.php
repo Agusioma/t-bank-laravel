@@ -11,8 +11,16 @@ class LoginController extends Controller
       {
         try {
           //code...
-          $categories = Customer::all();
+          $categories = Customer::query()
+          ->where('PhoneNo',$id)
+          ->get();
+          /*$posts = Post::query()
+          ->where('is_published',true)
+          ->orderBy('id','desc')
+          ->get();*/
+          //$count = $categories->count();
           echo($categories);
+          echo($count);
         } catch (Exception $e) {
           //throw $th;
           $e->getMessage();
