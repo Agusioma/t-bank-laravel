@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Artisan;
 
 Route::get('/', function () {
     //return view('welcome');
-    echo "ping";
+    echo "Connected:) Site under construction";
 });
 
 Route::get('seer/{id}', function ($id) {
@@ -34,4 +34,4 @@ Route::get('run-migrations', function () {
     }
     
 });
-Route::get('customer/{id}', [LoginController::class, 'show']);
+Route::get('customer/', [LoginController::class, 'auth_user']);

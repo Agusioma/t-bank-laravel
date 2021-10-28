@@ -8,42 +8,32 @@ use App\Models\Customer;
 class LoginController extends Controller
 {
   public $loggedInStatus = false;
+  public $user_phone;
+  public $user_token;
   
-    public function show($id)
+    public function auth_user(Request $token)
       {
+        $receivedData = $request->validate([
+          'user_phone' => 'required',
+          'user_token' => 'required'
+        ]);
+
+        $user_phone = $receivedData['user_phone'];
+        $user_token = $receivedData['user_token'];
+
         try {
           //code...
-          $categories = Customer::query()
-          ->where('PhoneNo',$id)
+          $user_details = Customer::query()
+          ->where('PhoneNo',$user_phone)
+          ->where('password',$user_token)
           ->get();
           /*$posts = Post::query()
           ->where('is_published',true)
           ->orderBy('id','desc')
           ->get();*/
-          $count = $categories->count();
+          $count = $user_details->count();
          if ($count >= 1) {
-           $loggedInStatus = true;
-            if($loggedInStatus){
-              /*$db_response= array(
-                //Fill in the request parameters with valid values
-                'InitiatorName' => $InitiatorName,
-                'SecurityCredential' => $SecurityCredential,
-                'CommandID' => $CommandID,
-                'Amount' => $Amount,
-                'PartyA' => $PartyA,
-                'PartyB' => $PartyB,
-                'Remarks' => $Remarks,
-                'QueueTimeOutURL' => $QueueTimeOutURL,
-                'ResultURL' => $ResultURL,
-                'Occasion' => $Occasion
-              );
-            
-              $data_string = json_encode($curl_post_data);*/
-              echo($categories);
-            }else{
-              
-            }
-
+              echo($user_details);
           } else {
             echo("Records non-existent");
 
