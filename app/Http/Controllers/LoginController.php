@@ -13,7 +13,7 @@ class LoginController extends Controller
   
     public function auth_user(Request $token)
       {
-        $receivedData = $request->validate([
+        $receivedData = $token->validate([
           'user_phone' => 'required',
           'user_token' => 'required'
         ]);
@@ -25,19 +25,47 @@ class LoginController extends Controller
           //code...
           $user_details = Customer::query()
           ->where('PhoneNo',$user_phone)
-          ->where('password',$user_token)
+          //->where('password',$user_token)
           ->get();
           /*$posts = Post::query()
           ->where('is_published',true)
           ->orderBy('id','desc')
           ->get();*/
           $count = $user_details->count();
-         if ($count >= 1) {
-              echo($user_details);
-          } else {
-            echo("Records non-existent");
-
-          }
+            if ($count >= 1) {
+                  //echo($user_details[0]['NatID']);
+                  if(($user_token == $user_details[0]['password'])&&($user_phone == $user_details[0]['PhoneNo'])){
+                      echo($user_details);
+                  }else{
+                  $pre_loaded = array(
+                  'id' => 'wrong00',
+                  'NatID' => '00',
+                  'firstname' => '00',
+                  'lastname' => '00',
+                  'email' => '00',
+                  'PhoneNo' => '00',
+                  'regDate' => '00',
+                  'password' => '00'
+                );
+              
+                $user_details = json_encode($pre_loaded);
+                    echo($user_details);
+                }
+              } else {
+                $pre_loaded = array(
+                  'id' => 'wrong55',
+                  'NatID' => '00',
+                  'firstname' => '00',
+                  'lastname' => '00',
+                  'email' => '00',
+                  'PhoneNo' => '00',
+                  'regDate' => '00',
+                  'password' => '00'
+                );
+              
+                $user_details = json_encode($pre_loaded);
+                    echo($user_details);
+              }
          
           //echo($count);
           /*$curl_post_data = array(
@@ -56,7 +84,6 @@ class LoginController extends Controller
         
           $data_string = json_encode($curl_post_data);*/
         } catch (Exception $e) {
-          //throw $th;
           $e->getMessage();
           echo($e);
         }
