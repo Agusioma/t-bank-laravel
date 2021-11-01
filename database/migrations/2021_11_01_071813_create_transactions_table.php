@@ -13,10 +13,17 @@ class CreateTransactionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('transactions', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('transactions')) {
+            // Code to create table
+            Schema::create('transactions', function (Blueprint $table) {
+                $table->id();
+                $table->string('customerID', 12);
+                $table->string('transID', 10);
+                $table->string('transType', 12);
+                $table->decimal('amount', 10, 2);
+                $table->string('transDate', 19);
+            });
+        }
     }
 
     /**

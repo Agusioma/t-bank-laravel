@@ -7,5 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transactions extends Model
 {
-    use HasFactory;
+    protected $table = 'transactions';
+    public $timestamps = false;
+    protected $primaryKey = 'id';
+    protected $filled = ['customerID',
+                            'transID',
+                            'transType',
+                            'amount',
+                            'transDate'
+                        ];
 }
