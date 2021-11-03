@@ -8,6 +8,7 @@ use App\Models\Transactions;
 class StatementsView extends Controller
 {
     public function loadStatements($acc_id){
+      $total_savings = 0;
         try {
             //code...
             $user_statements = Transactions::query()
@@ -15,10 +16,15 @@ class StatementsView extends Controller
             ->get();
             $count = $user_statements->count();
                 if ($count >= 1) {
-                echo($user_statements);
+                foreach ($user_statements as $user_statement) {
+                    $total_savings = $total_savings + $user_statement->amount;
+                    
+                }
+                echo($total_savings);
+                //echo($user_statements);
                   }else{
                     $pre_loaded = array(
-                        'id' => 'null00',
+                        'id' => '00',
                         'customerID' => '00',
                         'transID' => '00',
                         'transType' => '00',

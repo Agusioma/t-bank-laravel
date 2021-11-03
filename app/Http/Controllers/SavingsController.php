@@ -13,6 +13,7 @@ class SavingsController extends Controller
             $user_savings = Savings::query()
             ->where('customerID',$acc_id)
             ->get();
+
             $count = $user_savings->count();
                 if ($count >= 1) {
                 echo($user_savings);
