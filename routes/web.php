@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\StatementsView;
 use Illuminate\Support\Facades\Artisan;
 
 /*
@@ -20,9 +21,8 @@ Route::get('/', function () {
     echo "Connected:) Site under construction";
 });
 
-Route::get('seer/{id}', function ($id) {
-    echo($id);
-});
+Route::get('viewstatements/{acc_id}', [StatementsView::class, 'loadStatements']);
+
 Route::get('run-migrations', function () {
     try {
         //code...

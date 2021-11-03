@@ -49,7 +49,7 @@ class LoginController extends Controller
                 );
               
                 $user_details = json_encode($pre_loaded);
-                    echo($user_details);
+                    echo("[".$user_details."]");
                 }
               } else {
                 $pre_loaded = array(
@@ -64,7 +64,7 @@ class LoginController extends Controller
                 );
               
                 $user_details = json_encode($pre_loaded);
-                    echo($user_details);
+                    echo("[".$user_details."]");
               }
          
           //echo($count);
@@ -84,6 +84,7 @@ class LoginController extends Controller
         
           $data_string = json_encode($curl_post_data);*/
         } catch (Exception $e) {
+          //throw $th;
           $e->getMessage();
           echo($e);
         }
