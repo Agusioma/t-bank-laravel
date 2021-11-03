@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\StatementsView;
+use App\Http\Controllers\SavingsController;
 use Illuminate\Support\Facades\Artisan;
 
 /*
@@ -22,6 +23,7 @@ Route::get('/', function () {
 });
 
 Route::get('viewstatements/{acc_id}', [StatementsView::class, 'loadStatements']);
+Route::get('viewsavings/{acc_id}', [SavingsController::class, 'view_savings']);
 
 Route::get('run-migrations', function () {
     try {
