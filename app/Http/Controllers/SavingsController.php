@@ -59,18 +59,18 @@ class SavingsController extends Controller
                   $total_savings = $user_saving->january + $user_saving->february + $user_saving->march + $user_saving->april + $user_saving->may + $user_saving->june + $user_saving->july + $user_saving->august + $user_saving->september + $user_saving->october + $user_saving->november + $user_saving->december ;
               }
               $pre_loaded = array(
-                'totals' => $total_savings,
+                'totals' => number_format($total_savings,2)
               );
             
               $user_savings = json_encode($pre_loaded);
-              echo($user_savings);
+              echo("[".$user_savings."]");
                 }else{
                   $pre_loaded = array(
-                      'totals' => '00',
+                      'totals' => number_format(0,2)
                     );
                   
                     $user_savings = json_encode($pre_loaded);
-                    echo($user_savings);
+                    echo("[".$user_savings."]");
                 }
         } catch (Exception $e) {
           $e->getMessage();
