@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\StatementsView;
+use App\Http\Controllers\SavingsController;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +17,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('customer/', function () {
-    return view('welcome');
+Route::get('/', function () {
+    //return view('welcome');
+    echo "Connected:) Site under construction";
 });
-Route::get('customer/{id}', 'LoginController@show');
+
+Route::get('viewstatements/{acc_id}', [StatementsView::class, 'loadStatements']);
+Route::get('viewsavings/{acc_id}', [SavingsController::class, 'view_savings']);
+Route::get('totalsavings/{acc_id}', [SavingsController::class, 'total_savings']);
+
+Route::get('run-migrations', function () {
+    try {
+        //code...
+        return Artisan::call('migrate');
+    } catch (Exception $e) {
+        //throw $th;
+        $e->getMessage();
+        print($e);
+    }
+    
+});
+Route::get('customer/', [LoginController::class, 'auth_user']);
