@@ -23,6 +23,7 @@ Route::get('/', function () {
 });
 
 Route::get('viewstatements/{acc_id}', [StatementsView::class, 'loadStatements']);
+Route::get('statPreview/{acc_id}', [StatementsView::class, 'statPreview']);
 Route::get('viewsavings/{acc_id}', [SavingsController::class, 'view_savings']);
 Route::get('totalsavings/{acc_id}', [SavingsController::class, 'total_savings']);
 
