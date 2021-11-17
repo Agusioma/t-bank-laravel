@@ -17,7 +17,7 @@ class StatementsView extends Controller
                 if ($count >= 1) {
                 /*foreach ($user_statements as $user_statement) {
                     $total_savings = $total_savings + $user_statement->amount;
-                    
+
                 }*/
                 echo($user_statements);
                 //echo($user_statements);
@@ -30,7 +30,7 @@ class StatementsView extends Controller
                         'amount' => '00',
                         'transDate' => '00'
                       );
-                    
+
                       $user_statements = json_encode($pre_loaded);
                       echo("[".$user_statements."]");
                   }
@@ -44,13 +44,14 @@ class StatementsView extends Controller
           //code...
           $user_statements = Transactions::query()
           ->where('customerID',$acc_id)
+          ->orderBy('id', 'desc')
           ->take(3)
           ->get();
           $count = $user_statements->count();
               if ($count >= 1) {
               /*foreach ($user_statements as $user_statement) {
                   $total_savings = $total_savings + $user_statement->amount;
-                  
+
               }*/
               echo($user_statements);
               //echo($user_statements);
@@ -63,7 +64,7 @@ class StatementsView extends Controller
                       'amount' => '00',
                       'transDate' => '00'
                     );
-                  
+
                     $user_statements = json_encode($pre_loaded);
                     echo("[".$user_statements."]");
                 }
