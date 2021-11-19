@@ -22,9 +22,10 @@ Route::get('/', function () {
     echo "Connected:) Site under construction";
 });
 
-Route::get('viewstatements/{acc_id}', [StatementsView::class, 'loadStatements']);
-Route::get('viewsavings/{acc_id}', [SavingsController::class, 'view_savings']);
-Route::get('totalsavings/{acc_id}', [SavingsController::class, 'total_savings']);
+Route::get('viewstatements/', [StatementsView::class, 'loadStatements']);
+Route::get('statPreview/', [StatementsView::class, 'statPreview']);
+Route::get('viewsavings/', [SavingsController::class, 'view_savings']);
+Route::get('totalsavings/', [SavingsController::class, 'total_savings']);
 
 Route::get('run-migrations', function () {
     try {
