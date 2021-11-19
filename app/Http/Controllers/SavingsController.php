@@ -7,9 +7,14 @@ use App\Models\Savings;
 
 class SavingsController extends Controller
 {
-    public function view_savings($acc_id){
-        try {
-            //code...
+    public function view_savings(Request $token){
+      try {
+          //code...
+          $receivedData = $token->validate([
+            'user_id' => 'required'
+          ]);
+  
+          $acc_id = $receivedData['user_id'];
             $user_savings = Savings::query()
             ->where('customerID',$acc_id)
             ->get();
@@ -44,11 +49,16 @@ class SavingsController extends Controller
             echo($e);
           }
     }
-
-    public function total_savings($acc_id){
+    public function total_savings(Request $token){
       $total_savings  = 0;
       try {
           //code...
+          $receivedData = $token->validate([
+            'user_id' => 'required'
+          ]);
+  
+          $acc_id = $receivedData['user_id'];
+
           $user_savings = Savings::query()
           ->where('customerID',$acc_id)
           ->get();

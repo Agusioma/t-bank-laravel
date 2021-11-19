@@ -7,9 +7,15 @@ use App\Models\Transactions;
 
 class StatementsView extends Controller
 {
-    public function loadStatements($acc_id){
+    public function loadStatements(Request $token){
         try {
             //code...
+            $receivedData = $token->validate([
+              'user_id' => 'required'
+            ]);
+    
+            $acc_id = $receivedData['user_id'];
+
             $user_statements = Transactions::query()
             ->where('customerID',$acc_id)
             ->get();
@@ -19,6 +25,7 @@ class StatementsView extends Controller
                     $total_savings = $total_savings + $user_statement->amount;
 
                 }*/
+                
                 echo($user_statements);
                 //echo($user_statements);
                   }else{
@@ -39,9 +46,14 @@ class StatementsView extends Controller
             echo($e);
           }
     }
-    public function statPreview($acc_id){
+    public function statPreview(Request $token){
       try {
           //code...
+          $receivedData = $token->validate([
+            'user_id' => 'required'
+          ]);
+  
+          $acc_id = $receivedData['user_id'];
           $user_statements = Transactions::query()
           ->where('customerID',$acc_id)
           ->orderBy('id', 'desc')
