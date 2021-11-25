@@ -27,6 +27,7 @@ Route::get('viewstatements/', [StatementsView::class, 'loadStatements']);
 Route::get('statPreview/', [StatementsView::class, 'statPreview']);
 Route::get('viewsavings/', [SavingsController::class, 'view_savings']);
 Route::get('totalsavings/', [SavingsController::class, 'total_savings']);
+Route::get('updatedetails/', [AccountController::class, 'update_details']);
 
 Route::get('run-migrations', function () {
     try {

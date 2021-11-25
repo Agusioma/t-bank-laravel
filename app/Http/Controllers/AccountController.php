@@ -22,8 +22,8 @@ class AccountController extends Controller
         $updated_eAddress = $receivedData['_eAddress'];
         $natID = $receivedData['_natID'];
         $updated_pNumber = $receivedData['_pNumber'];
-
-        try {
+echo $updated_fName.$updated_lName.$updated_eAddress.$natID.$updated_pNumber;
+      /*  try {
           //code...
           $updated_query = Customer::where('_natID', $updated_natID)
           ->update(['firstname' => $updated_fName])
@@ -42,6 +42,6 @@ class AccountController extends Controller
           //throw $th;
           $e->getMessage();
           echo($e);
-        }
+        }*/
       }
 }
