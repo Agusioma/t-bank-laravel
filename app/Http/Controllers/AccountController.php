@@ -22,26 +22,39 @@ class AccountController extends Controller
         $updated_eAddress = $receivedData['_eAddress'];
         $natID = $receivedData['_natID'];
         $updated_pNumber = $receivedData['_pNumber'];
-echo $updated_fName.$updated_lName.$updated_eAddress.$natID.$updated_pNumber;
-      /*  try {
+       try {
           //code...
-          $updated_query = Customer::where('_natID', $updated_natID)
-          ->update(['firstname' => $updated_fName])
-          ->update(['lastname' => $updated_fName])
-          ->update(['email' => $updated_eAddress])
-          ->update(['PhoneNo' => $updated_pNumber]);
-            if($updated_query){
-                $updated_details = Customer::query()
+          $current_user_details = Customer::query()
+          ->where('NatID', $natID)
+          ->get();
+
+          $current_user_details[0]['firstname'] = $updated_fName;
+          $current_user_details[0]['lastname'] = $updated_lName;
+          $current_user_details[0]['email'] = $updated_fName;
+          $current_user_details[0]['firstname'] = $updated_fName;
+          $current_user_details[0]['firstname'] = $updated_fName;
+
+          $current_user_details[0]->save();
+      // $updated_query = Customer::where('_natID', $updated_natID)
+                            //->update(['firstname' => $updated_fName]);
+          //->update(['lastname' => $updated_fName])
+          //->update(['email' => $updated_eAddress])
+          //->update(['PhoneNo' => $updated_pNumber]);
+            //if($updated_query){
+               /* $updated_details = Customer::query()
                 ->where('PhoneNo', $updated_pNumber)
                 ->get();
 
-                echo($user_details);
-            }
+                echo($user_details);*/
+              //  echo("yooo");
+            //}else{
+                //echo("yeee");
+           // }
 
         } catch (Exception $e) {
           //throw $th;
           $e->getMessage();
           echo($e);
-        }*/
+        }
       }
 }
