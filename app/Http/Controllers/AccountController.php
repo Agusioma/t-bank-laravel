@@ -55,26 +55,20 @@ class AccountController extends Controller
           '_natID' => 'required'
         ]);
 
-        $updated_fName = $receivedData['_fName'];
-        $updated_lName = $receivedData['_lName'];
-        $updated_eAddress = $receivedData['_eAddress'];
+        $updated_password = $receivedData['_password'];
         $natID = $receivedData['_natID'];
-        $updated_pNumber = $receivedData['_pNumber'];
        try {
           //code...
           $current_user_details = Customer::query()
           ->where('NatID', $natID)
           ->get();
 
-          $current_user_details[0]['firstname'] = $updated_fName;
-          $current_user_details[0]['lastname'] = $updated_lName;
-          $current_user_details[0]['email'] = $updated_eAddress;
-          $current_user_details[0]['PhoneNo'] = $updated_pNumber;
+          $current_user_details[0]['password'] = $updated_password;
 
           $current_user_details[0]->save();
 
                 $updated_details = Customer::query()
-                ->where('PhoneNo', $updated_pNumber)
+                ->where('NatID', $natID)
                 ->get();
 
                 echo($updated_details);
