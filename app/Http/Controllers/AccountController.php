@@ -7,7 +7,7 @@ use App\Models\Customer;
 
 class AccountController extends Controller
 {
-    public function auth_user(Request $token)
+    public function update_details(Request $token)
       {
         $receivedData = $token->validate([
           '_fName' => 'required',
@@ -30,7 +30,13 @@ class AccountController extends Controller
           ->update(['lastname' => $updated_fName])
           ->update(['email' => $updated_eAddress])
           ->update(['PhoneNo' => $updated_pNumber]);
+            if($updated_query){
+                $updated_details = Customer::query()
+                ->where('PhoneNo', $updated_pNumber)
+                ->get();
 
+                echo($user_details);
+            }
 
         } catch (Exception $e) {
           //throw $th;
