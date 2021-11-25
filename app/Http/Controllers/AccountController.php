@@ -30,26 +30,16 @@ class AccountController extends Controller
 
           $current_user_details[0]['firstname'] = $updated_fName;
           $current_user_details[0]['lastname'] = $updated_lName;
-          $current_user_details[0]['email'] = $updated_fName;
-          $current_user_details[0]['firstname'] = $updated_fName;
-          $current_user_details[0]['firstname'] = $updated_fName;
+          $current_user_details[0]['email'] = $updated_eAddress;
+          $current_user_details[0]['PhoneNo'] = $updated_pNumber;
 
           $current_user_details[0]->save();
-      // $updated_query = Customer::where('_natID', $updated_natID)
-                            //->update(['firstname' => $updated_fName]);
-          //->update(['lastname' => $updated_fName])
-          //->update(['email' => $updated_eAddress])
-          //->update(['PhoneNo' => $updated_pNumber]);
-            //if($updated_query){
-               /* $updated_details = Customer::query()
+
+                $updated_details = Customer::query()
                 ->where('PhoneNo', $updated_pNumber)
                 ->get();
 
-                echo($user_details);*/
-              //  echo("yooo");
-            //}else{
-                //echo("yeee");
-           // }
+                echo($updated_details);
 
         } catch (Exception $e) {
           //throw $th;
