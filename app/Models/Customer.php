@@ -9,6 +9,6 @@ class Customer extends Model
 {
     protected $table = 'customers';
     public $timestamps = false;
-    protected $primaryKey = 'NatID';
-    protected $filled = ['NatID','firstname','lastname','email','PhoneNo','regDate','password'];
+    protected $primaryKey = 'id';
+    protected $filled = ['id','NatID','firstname','lastname','email','PhoneNo','regDate','password'];
 }

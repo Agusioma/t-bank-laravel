@@ -29,6 +29,7 @@ Route::get('viewsavings/', [SavingsController::class, 'view_savings']);
 Route::get('totalsavings/', [SavingsController::class, 'total_savings']);
 Route::get('updatedetails/', [AccountController::class, 'update_details']);
 Route::get('updatepassword/', [AccountController::class, 'update_password']);
+Route::get('register_user/', [AccountController::class, 'sign_up']);
 
 Route::get('run-migrations', function () {
     try {
