@@ -79,4 +79,43 @@ class AccountController extends Controller
           echo($e);
         }
       }
+
+      public function sign_up(Request $token)
+      {
+        $receivedData = $token->validate([
+          '_fName' => 'required',
+          '_lName' => 'required',
+          '_eAddress' => 'required',
+          '_natID' => 'required',
+          '_userPass' => 'required'
+        ]);
+
+        $_fName = $receivedData['_fName'];
+        $_lName = $receivedData['_lName'];
+        $_eAddress = $receivedData['_eAddress'];
+        $_natID = $receivedData['_natID'];
+        $_pNumber = $receivedData['_pNumber'];
+        $_userPass = $receivedData['_userPass'];
+       try {
+          //code...
+          $signup = Customer::create([
+            'NatID' => $_natID,
+            'firstname' => $_fName,
+            'lastname' => $_lName,
+            'email' => $_eAddress,
+            'PhoneNo' => $_pNumber,
+            'regDate' => date("Y-m-d H:i:s"),
+            'password' => $_userPass,
+        ]);
+
+       // echo($signup);
+
+               // echo($updated_details);
+
+        } catch (Exception $e) {
+          //throw $th;
+          $e->getMessage();
+          echo($e);
+        }
+      }
     }
