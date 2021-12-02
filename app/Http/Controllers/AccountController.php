@@ -87,6 +87,7 @@ class AccountController extends Controller
           '_lName' => 'required',
           '_eAddress' => 'required',
           '_natID' => 'required',
+          '_pNumber' => 'required',
           '_userPass' => 'required'
         ]);
 
@@ -96,17 +97,19 @@ class AccountController extends Controller
         $_natID = $receivedData['_natID'];
         $_pNumber = $receivedData['_pNumber'];
         $_userPass = $receivedData['_userPass'];
+        echo($_fName." ".date("Y-m-d H:i:s")." ".$_eAddress ." ".$_natID." ".$_pNumber." ".$_userPass);
        try {
           //code...
-          $signup = Customer::create([
-            'NatID' => $_natID,
-            'firstname' => $_fName,
-            'lastname' => $_lName,
-            'email' => $_eAddress,
-            'PhoneNo' => $_pNumber,
-            'regDate' => date("Y-m-d H:i:s"),
-            'password' => $_userPass,
-        ]);
+          $signup = new Customer;
+          $signup->id = $_natID;
+          $signup->NatID = $_natID;
+          $signup->firstname = $_fName;
+          $signup->lastname = $_lName;
+          $signup->email = $_eAddress;
+          $signup->PhoneNo = $_pNumber;
+          $signup->regDate = date("Y-m-d H:i:s");
+          $signup->password = $_userPass;
+          $signup->save();
 
        // echo($signup);
 
