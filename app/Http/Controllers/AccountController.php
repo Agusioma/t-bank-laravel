@@ -71,7 +71,12 @@ class AccountController extends Controller
                 ->where('NatID', $natID)
                 ->get();
 
-                echo($updated_details);
+                $pre_loaded = array(
+                  'response' => "OK"
+                );
+              
+                $final_response = json_encode($pre_loaded);
+                echo("[".$final_response."]");
 
         } catch (Exception $e) {
           //throw $th;
