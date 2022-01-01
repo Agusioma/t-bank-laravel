@@ -102,7 +102,7 @@ class AccountController extends Controller
         $_natID = $receivedData['_natID'];
         $_pNumber = $receivedData['_pNumber'];
         $_userPass = $receivedData['_userPass'];
-        echo($_fName." ".date("Y-m-d H:i:s")." ".$_eAddress ." ".$_natID." ".$_pNumber." ".$_userPass);
+        //echo($_fName." ".date("Y-m-d H:i:s")." ".$_eAddress ." ".$_natID." ".$_pNumber." ".$_userPass);
        try {
           //code...
           $signup = new Customer;
@@ -116,9 +116,12 @@ class AccountController extends Controller
           $signup->password = $_userPass;
           $signup->save();
 
-       // echo($signup);
-
-               // echo($updated_details);
+          $pre_loaded = array(
+            'response' => "OK"
+          );
+        
+          $final_response = json_encode($pre_loaded);
+          echo("[".$final_response."]");
 
         } catch (Exception $e) {
           //throw $th;
