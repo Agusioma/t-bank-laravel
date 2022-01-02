@@ -1,6 +1,6 @@
 ## T-Bank Laravel v1.0.0
 
-This is the backend logic for the T-Bank app which is to be made public soon.
+This is the backend logic for the T-Bank app. The app's repository is found [here](https://github.com/Agusioma/t-bank-app).
 
 It consists of three models:
 
@@ -17,7 +17,7 @@ It also has three controllers:
 
 All the routes are stored in the **web.php** file.
 
-> This was purely the backend. No **view** file was created. The UI is rendered using the android app(To be released soon).
+> This was purely the backend. No **view** file was created. The UI is rendered using the android app.
 
 > Also note this is the first version, so more features will be added later. You can openly contribute to this, customise it for your use etc.
 
