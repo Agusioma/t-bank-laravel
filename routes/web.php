@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\StatementsView;
 use App\Http\Controllers\SavingsController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\DarajaController;
 use Illuminate\Support\Facades\Artisan;
 
 /*
@@ -30,6 +31,7 @@ Route::get('totalsavings/', [SavingsController::class, 'total_savings']);
 Route::get('updatedetails/', [AccountController::class, 'update_details']);
 Route::get('updatepassword/', [AccountController::class, 'update_password']);
 Route::get('register_user/', [AccountController::class, 'sign_up']);
+Route::get('stk/', [DarajaController::class, 'inititiate_sim']);
 
 Route::get('run-migrations', function () {
     try {
